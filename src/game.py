@@ -1,6 +1,7 @@
 import pygame
 from sys import exit
 from classes.Hammer import Hammer
+from classes.MoleManager import MoleManager
 
 from constants.GameConfig import MoleGame, ScreenSize
 from constants.AssetPath import *
@@ -34,10 +35,8 @@ class Game:
         self.hit = 0
         self.miss = 0
 
-        self.moles: list[Mole] = []
-
         for i in range(0, 9):
-            self.moles.append(
+            MoleManager.moles.append(
                 Mole(
                     (
                         MoleGame.POSITIONS[i][0],
@@ -54,16 +53,16 @@ class Game:
         self.screen.blit(self.top_bg, (0, 0))
 
         for i in range(0, 3):
-            self.moles[i].update(self.screen)
+            MoleManager.moles[i].update(self.screen)
 
         self.screen.blit(self.mid_2_bg, (0, 0))
         for i in range(3, 6):
-            self.moles[i].update(self.screen)
+            MoleManager.moles[i].update(self.screen)
 
         self.screen.blit(self.mid_1_bg, (0, 0))
 
         for i in range(6, 9):
-            self.moles[i].update(self.screen)
+            MoleManager.moles[i].update(self.screen)
 
         self.screen.blit(self.bot_bg, (0, 0))
 
@@ -80,6 +79,11 @@ class Game:
                 if event.type == pygame.QUIT:
                     pygame.quit()
                     exit()
+
+            if pygame.mouse.get_pressed()[0]:
+                self.hammer.onMousePressed()
+            else:
+                self.hammer.onMouseReleased()
 
             self.draw()
 

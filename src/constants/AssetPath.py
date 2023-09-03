@@ -1,6 +1,5 @@
 class ImagePath:
     IMAGE = "./assets/images/"
-    BACKGROUND = IMAGE + "background.png"
     TOP_BACKGROUND = IMAGE + "top_bg.png"
     MID_1_BACKGROUND = IMAGE + "mid_1_bg.png"
     MID_2_BACKGROUND = IMAGE + "mid_2_bg.png"
@@ -12,3 +11,7 @@ class ImagePath:
 class FontPath:
     FONT = "./assets/fonts/"
     KNIFER = FONT + "Knifer_300.otf"
+
+
+class AudioPath:
+    AUDIO = "./assets/audio/"
