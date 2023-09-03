@@ -2,6 +2,7 @@ import pygame
 from sys import exit
 from classes.Hammer import Hammer
 from classes.MoleManager import MoleManager
+from classes.ScoreManager import ScoreManager
 
 from constants.GameConfig import MoleGame, ScreenSize
 from constants.AssetPath import *
@@ -65,6 +66,9 @@ class Game:
             MoleManager.moles[i].update(self.screen)
 
         self.screen.blit(self.bot_bg, (0, 0))
+
+        self.hit_text.text = "hit: " + str(ScoreManager.hit)
+        self.miss_text.text = "miss: " + str(ScoreManager.miss)
 
         self.hit_text.update(self.screen)
         self.miss_text.update(self.screen)

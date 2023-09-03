@@ -1,6 +1,7 @@
 import pygame
 import random
 from classes.MoleManager import MoleManager
+from classes.ScoreManager import ScoreManager
 from classes.Time import Time
 
 from constants.AssetPath import ImagePath
@@ -41,6 +42,7 @@ class Hammer:
             self.click = True
             for mole in MoleManager.moles:
                 if mole.rect.colliderect(self.rect) and not mole.isHide:
+                    ScoreManager.hit += 1
                     mole.hide()
 
     def onMouseReleased(self):

@@ -1,5 +1,6 @@
 import pygame
 import random
+from classes.ScoreManager import ScoreManager
 
 from classes.Time import Time
 from constants.AssetPath import ImagePath
@@ -52,6 +53,7 @@ class Mole:
             if self.isHide:
                 self.show()
             else:
+                ScoreManager.miss += 1
                 self.hide()
 
     def show(self):
