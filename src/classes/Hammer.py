@@ -1,11 +1,9 @@
 import pygame
-import random
+
 from classes.MoleManager import MoleManager
-from classes.ScoreManager import ScoreManager
 from classes.Time import Time
 
 from constants.AssetPath import ImagePath
-from constants.GameConfig import ScreenSize
 
 
 class Hammer:
@@ -42,8 +40,7 @@ class Hammer:
             self.click = True
             for mole in MoleManager.moles:
                 if mole.rect.colliderect(self.rect) and not mole.isHide:
-                    ScoreManager.hit += 1
-                    mole.hide()
+                    mole.hit()
 
     def onMouseReleased(self):
         self.angle = 0

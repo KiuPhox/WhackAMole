@@ -30,8 +30,8 @@ class Game:
         self.mid_2_bg = pygame.image.load(ImagePath.MID_2_BACKGROUND)
         self.bot_bg = pygame.image.load(ImagePath.BOT_BACKGROUND)
 
-        self.hit_text = Text("hit: 0", self.font, (160, 720))
-        self.miss_text = Text("miss: 0", self.font, (260, 720))
+        self.hit_text = Text("hit: 0", self.font, (150, 720))
+        self.miss_text = Text("miss: 0", self.font, (270, 720))
 
         self.hit = 0
         self.miss = 0

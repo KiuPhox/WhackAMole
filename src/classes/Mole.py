@@ -1,5 +1,8 @@
 import pygame
 import random
+import time
+
+
 from classes.ScoreManager import ScoreManager
 
 from classes.Time import Time
@@ -9,6 +12,9 @@ from constants.AssetPath import ImagePath
 class Mole:
     def __init__(self, position: tuple):
         self.body = pygame.image.load(ImagePath.MOLE_BODY)
+        self.normalFace = pygame.image.load(ImagePath.NORMAL_FACE)
+        self.hitFace = pygame.image.load(ImagePath.HIT_FACE)
+        self.face = self.normalFace
 
         self.initialPosition = (
             position[0] - self.body.get_size()[0] / 2,
@@ -44,6 +50,13 @@ class Mole:
         )
 
         screen.blit(self.body, self.renderPosition)
+        screen.blit(
+            self.face,
+            (
+                self.renderPosition[0] + 16,
+                self.renderPosition[1] + 18,
+            ),
+        )
 
         # pygame.draw.rect(screen, (255, 0, 0), self.rect, 1)
 
@@ -60,8 +73,14 @@ class Mole:
         self.isHide = False
         self.timer = 2
         self.actualPosition = self.initialPosition
+        self.face = self.normalFace
 
     def hide(self):
         self.isHide = True
         self.timer = random.random() * 3 + 2
         self.actualPosition = (self.initialPosition[0], self.initialPosition[1] + 52)
+
+    def hit(self):
+        ScoreManager.hit += 1
+        self.face = self.hitFace
+        self.hide()
