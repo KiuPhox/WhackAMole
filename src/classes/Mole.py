@@ -1,6 +1,5 @@
 import pygame
 import random
-import time
 
 
 from classes.ScoreManager import ScoreManager
@@ -15,6 +14,7 @@ class Mole:
         self.normalFace = pygame.image.load(ImagePath.NORMAL_FACE)
         self.hitFace = pygame.image.load(ImagePath.HIT_FACE)
         self.face = self.normalFace
+        self.effect = HitEffect(self)
 
         self.initialPosition = (
             position[0] - self.body.get_size()[0] / 2,
@@ -69,6 +69,8 @@ class Mole:
                 ScoreManager.miss += 1
                 self.hide()
 
+        self.effect.update(screen)
+
     def show(self):
         self.isHide = False
         self.timer = 2
@@ -83,4 +85,23 @@ class Mole:
     def hit(self):
         ScoreManager.hit += 1
         self.face = self.hitFace
+        self.effect.show()
         self.hide()
+
+
+class HitEffect:
+    def __init__(self, mole: Mole):
+        self.timer = 0
+        self.image = pygame.image.load(ImagePath.HIT_EFFECT)
+        self.mole = mole
+
+    def update(self, screen: pygame.Surface):
+        if self.timer > 0:
+            screen.blit(
+                self.image,
+                (self.mole.renderPosition[0] - 10, self.mole.renderPosition[1]),
+            )
+            self.timer -= Time.deltaTime
+
+    def show(self):
+        self.timer = 0.15

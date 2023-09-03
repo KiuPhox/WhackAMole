@@ -6,6 +6,7 @@ class ImagePath:
     BOT_BACKGROUND = IMAGE + "bot_bg.png"
     MOLE_BODY = IMAGE + "mole_body.png"
     HAMMER = IMAGE + "hammer.png"
+    HIT_EFFECT = IMAGE + "hit_effect.png"
     NORMAL_FACE = IMAGE + "normal_face.png"
     HIT_FACE = IMAGE + "hit_face.png"
 
