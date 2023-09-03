@@ -7,6 +7,7 @@ from constants.AssetPath import *
 
 from classes.Mole import Mole
 from classes.Text import Text
+from classes.Time import Time
 
 
 class Game:
@@ -14,6 +15,8 @@ class Game:
         pygame.init()
         pygame.display.set_caption("Whack a Mole")
         pygame.mouse.set_visible(False)
+
+        Game.dt = 0
 
         self.screen = pygame.display.set_mode((ScreenSize.WIDTH, ScreenSize.HEIGHT))
 
@@ -31,7 +34,7 @@ class Game:
         self.hit = 0
         self.miss = 0
 
-        self.moles = []
+        self.moles: list[Mole] = []
 
         for i in range(0, 9):
             self.moles.append(
@@ -80,9 +83,8 @@ class Game:
 
             self.draw()
 
-            # make hammer follow mouse
-
-            self.clock.tick(60)
+            Time.deltaTime = self.clock.tick(60) / 1000
+            Time.time = pygame.time.get_ticks() / 1000
 
 
 game = Game()
