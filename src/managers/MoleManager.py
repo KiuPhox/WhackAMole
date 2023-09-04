@@ -1,4 +1,4 @@
-from classes.Mole import Mole
+from objects.Mole import Mole
 
 
 class MoleManager:

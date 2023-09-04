@@ -1,9 +1,11 @@
 import pygame
 
-from classes.MoleManager import MoleManager
-from classes.Time import Time
 
 from constants.AssetPath import ImagePath
+from managers.AudioManager import AudioManager
+from managers.MoleManager import MoleManager
+
+from utils.Time import Time
 
 
 class Hammer:
@@ -40,6 +42,7 @@ class Hammer:
             self.click = True
             for mole in MoleManager.moles:
                 if mole.rect.colliderect(self.rect) and not mole.isHide:
+                    AudioManager.playHitSound()
                     mole.hit()
 
     def onMouseReleased(self):

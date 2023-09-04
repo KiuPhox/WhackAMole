@@ -1,15 +1,17 @@
 import pygame
 from sys import exit
-from classes.Hammer import Hammer
-from classes.MoleManager import MoleManager
-from classes.ScoreManager import ScoreManager
+from managers.AudioManager import AudioManager
+from objects.Hammer import Hammer
+from objects.Mole import Mole
+from objects.Text import Text
+
+from managers.MoleManager import MoleManager
+from managers.ScoreManager import ScoreManager
+
+from utils.Time import Time
 
 from constants.GameConfig import MoleGame, ScreenSize
 from constants.AssetPath import *
-
-from classes.Mole import Mole
-from classes.Text import Text
-from classes.Time import Time
 
 
 class Game:

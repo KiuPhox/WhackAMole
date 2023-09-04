@@ -2,9 +2,9 @@ import pygame
 import random
 
 
-from classes.ScoreManager import ScoreManager
+from managers.ScoreManager import ScoreManager
 
-from classes.Time import Time
+from utils.Time import Time
 from constants.AssetPath import ImagePath
 
 

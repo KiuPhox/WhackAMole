@@ -17,4 +17,5 @@ class FontPath:
 
 
 class AudioPath:
-    AUDIO = "./assets/audio/"
+    AUDIO = "./assets/audios/"
+    HIT = AUDIO + "hit.wav"
