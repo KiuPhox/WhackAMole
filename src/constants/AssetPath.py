@@ -19,3 +19,4 @@ class FontPath:
 class AudioPath:
     AUDIO = "./assets/audios/"
     HIT = AUDIO + "hit.wav"
+    BG_MUSIC = AUDIO + "TheBoundaryofLore.mp3"
